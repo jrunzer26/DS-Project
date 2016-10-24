@@ -1,0 +1,7 @@
+
+public class Network {
+
+	public void start() {
+		System.out.println("Hello");
+	}
+}

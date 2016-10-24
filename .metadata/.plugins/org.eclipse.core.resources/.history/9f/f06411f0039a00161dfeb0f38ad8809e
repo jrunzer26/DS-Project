@@ -1,0 +1,7 @@
+import org.graphstream.graph.*;
+public class Network {
+	public void start() {
+		System.out.println("Hello");
+		Graph graph
+	}
+}

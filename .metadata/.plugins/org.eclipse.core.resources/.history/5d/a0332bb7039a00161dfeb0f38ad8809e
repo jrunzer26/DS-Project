@@ -1,0 +1,7 @@
+
+public class Network {
+
+	public void start() {
+		Syste.out.println("Hello");
+	}
+}

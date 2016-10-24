@@ -1,0 +1,23 @@
+import org.graphstream.graph.*;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.graph.implementations.SingleGraph;
+
+public class Network {
+	public void start() {
+		System.out.println("Hello");
+		Graph graph = new MultiGraph("Turotial 1");
+		graph.addNode("A");
+		graph.addNode("B");
+		graph.addEdge("AB", "A", "B");
+		graph.display();
+		graph.addEdge("AB", "A", "B");
+		try {
+			Thread.sleep(5000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		graph.addNode("C");
+		graph.addEdge("AC", "A", "C");
+		
+	}
+}
