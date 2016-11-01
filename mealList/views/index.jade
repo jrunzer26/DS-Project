@@ -3,3 +3,15 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  #searchBar
+    #searchTitle
+      h2= Search
+    #searchQuerys
+      h3= "Search"
+      input(type="text" id="SearchValue")
+      input(type="submit" value="Search" id="SearchSubmit")
+  #mealList
+    #title
+      h2= "Meal List"
+    #meals
+      ul(id="mealList")
