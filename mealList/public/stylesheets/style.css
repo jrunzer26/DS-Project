@@ -1,8 +1,100 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  
 }
 
 a {
   color: #00B7FF;
+}
+h1 {
+	color: #ffffff;
+}
+
+label {
+	color: 000000;
+}
+
+img {
+	display: block;
+}
+#titleBar {
+	padding-left: 30px;
+	padding-top: 60px;
+	padding-bottom: 20px;
+	background-color: #00838F;
+}
+
+#information {
+	background-color: #0097a7;
+	padding-left: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: 000000;
+	font-size: 18px;
+}
+
+#searchBar label {
+	color: #ffffff;
+}
+
+
+#searchBar label, #searchBar #SearchValue {
+	margin-right: 20px;
+}
+
+#searchBar {
+	padding-left: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #00ACC1;
+	font-size: 18px;
+}
+
+
+#mealList {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 30px;
+	background-color: #E0F7FA;
+}
+
+#mealList #title h2 {
+	color: 000000;
+}
+.mealItem {
+	border: solid black 4px;
+}
+
+.foodImage {
+	display: inline-block;
+	float: left;
+	padding: 8px;
+	margin-left: 12px;
+	border: solid black 4px;
+}
+
+.mealContents {
+	display: inline-block;
+	float: left;
+}
+
+.description {
+	padding: 25px;
+	font-size: 16px;
+	border: solid black 4px;
+	display: inline-block;
+	float: left;
+	width: 300px;
+}
+
+.mealContents {
+	overflow: hidden;
+}
+
+.someImage {
+	float: left;
+}
+
+.someLabel {
+	float: left;
 }
