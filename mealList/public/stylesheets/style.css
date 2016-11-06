@@ -58,43 +58,74 @@ img {
 	background-color: #E0F7FA;
 }
 
+#meals {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
 #mealList #title h2 {
 	color: 000000;
 }
-.mealItem {
-	border: solid black 4px;
-}
 
 .foodImage {
-	display: inline-block;
 	float: left;
 	padding: 8px;
 	margin-left: 12px;
-	border: solid black 4px;
 }
 
 .mealContents {
-	display: inline-block;
 	float: left;
 }
 
 .description {
 	padding: 25px;
 	font-size: 16px;
-	border: solid black 4px;
-	display: inline-block;
 	float: left;
-	width: 300px;
+	width: 350px;
 }
 
 .mealContents {
 	overflow: hidden;
 }
 
+.mealContents input {
+	margin-left: 16px;
+	margin-right: 8px;
+}
+
+ul {
+	list-style-type: none;
+}
+li {
+	padding-bottom: 8px;
+}
 .someImage {
 	float: left;
 }
 
 .someLabel {
 	float: left;
+}
+
+.mealLabel {
+	padding-left: 10px;
+	background-color: #00ACC1;
+}
+
+.mealBorder {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	display: inline-block;
+	width: 100%;
+	background-color: #ffffff;
+}
+
+ .mealLabel  {
+	padding-top: 8px;
+	padding-bottom: 4px;
+	font-size: 18px; 
+}
+
+.mealLabel a {
+	color: #ffffff;
 }
