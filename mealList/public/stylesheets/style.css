@@ -129,3 +129,18 @@ li {
 .mealLabel a {
 	color: #ffffff;
 }
+
+
+
+#login label {
+	display: inline-block;
+	float: left;
+	clear: left;
+	width: 250px;
+	text-align: right;
+}
+
+#login input {
+	display: inline-block;
+	float: left;
+}
