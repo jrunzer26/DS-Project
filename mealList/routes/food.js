@@ -10,7 +10,7 @@ var rp = require('request-promise');
 */
 router.post('/', function(req, res, next) {
   var search = req.body.search;
-  var url = "https://api.edamam.com/search?q="+search+"?to=30"+"&app_id="+appId+"&app_key="+apikey
+  //var url = "https://api.edamam.com/search?q="+search+"?to=30"+"&app_id="+appId+"&app_key="+apikey
   var options = {
     uri: "https://api.edamam.com/search?q="+search+"&app_id="+appId+"&app_key="+apikey
   };
@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
     return res.status(200).send(result);
   })
   .catch(function (err) {
-    return res.status(500).send({error: err})
+    return res.status(407).send({err: "An internal error occured. Try again later."})
   }); 
 });
 

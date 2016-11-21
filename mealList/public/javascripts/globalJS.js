@@ -1,16 +1,26 @@
-$(document).ready(function() {
-	$('#hello').click(function() {
-		$.ajax({
-			type: 'GET',
-			url: '/ajaxTest',
-			dataType: 'JSON'
-		}).done(function(res) {
-			$('#hello').text(res.ajax);
-		});
+var message = function(message, type) {
+	var successAlert = document.createElement('div');
+	if (type == "danger")
+		successAlert.setAttribute('class', 'alert alert-danger');
+	else
+		successAlert.setAttribute('class', 'alert alert-success');
+	var x = document.createElement('a');
+	x.setAttribute('href', "#");
+	x.setAttribute('class', 'close');
+	x.setAttribute('data-dismiss', 'alert-danger');
+	successAlert.append(x);
+	x.innerHTML = '&times';
+	x.addEventListener("click", function () {
+		$(".alert").remove();
 	});
+	var strong = document.createElement('strong');
+	strong.innerHTML = message;
+	successAlert.append(strong);
+	$('body').append(successAlert);
+}
 
+$(document).ready(function() {
 	$('#SearchSubmit').click(function() {
-		alert('search clicked');
 		var searchValue = $('#SearchValue').val();
 		$.ajax({
 			type: 'POST',
@@ -55,7 +65,7 @@ $(document).ready(function() {
 			},
 			error: function(res) {
 				console.log(res);
-				$('#hello').text("error");
+				message(res.responseJSON.err, "danger");
 			}
 		});
 	});
@@ -64,9 +74,8 @@ $(document).ready(function() {
 		var email = $('#email').val();
 		var passwordValue = $('#password').val();
 		var listNameValue = $('#ListName').val();
-		alert(email + " " + password + " " + listNameValue);
+		console.log(email);
 		var list = $('#meals .row').children();
-		alert(list.length);
 		var mealsToAdd = [];
 		for (var i = 0; i < list.length; i++) {
 			if($('#checkbox' + i).is(':checked')) {
@@ -81,10 +90,6 @@ $(document).ready(function() {
 			}			
 		}
 		
-		for (var i = 0; i < ingredients.length; i++) {
-			alert(ingredients[i].name);
-		}
-
 		//send ajax post with ingredients and shopping list name
 		/* POST todoist. - makes a list with the items
 		  {
@@ -100,7 +105,7 @@ $(document).ready(function() {
 		*/
 		var listData = {
 						username: email,
-						passwrd: passwordValue,
+						password: passwordValue,
 						listname: listNameValue,
 						items: ingredients
 						};
@@ -112,16 +117,13 @@ $(document).ready(function() {
 			dataType: 'JSON',
 			contentType: "application/json; charset=utf-8",
 			success: function(res) {
-				alert('success');
-				
+				message("List Saved!", "success");			
 			},
 			error: function(res) {
-				console.log(res);
-				alert("error posting list");
+				message(res.responseJSON.err, "danger");
 			}
 		});
 	});
-
 });
 
 

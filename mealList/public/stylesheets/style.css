@@ -130,17 +130,23 @@ li {
 	color: #ffffff;
 }
 
-
-
-#login label {
-	display: inline-block;
-	float: left;
-	clear: left;
-	width: 250px;
-	text-align: right;
+#login {
+	padding-top: 10px;
+	padding-left: 30px;
 }
 
-#login input {
-	display: inline-block;
-	float: left;
+#form {
+	padding-top: 10px;
+	padding-left: 20px;
+}
+
+#form .row {
+	padding-bottom: 5px;
+}
+
+.alert {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
 }

@@ -20,17 +20,19 @@ block content
     div(id="meals")
       div(class="row")
         
-  #login
+  div(id="login")
     h3="Todoist Login"
-    label Email:
-    input(type="text" id="email")
-    br
-    label Password:
-    input(type="password" id="password")
-    br
-    label List Name
-    input(type="text" id="ListName")
+    div(id="form")
+      div(class="row")
+        label(class="col-md-1") Email:
+        input(type="text" id="email" class="col-md-2")
+      div(class="row")
+        label(for="password" class="col-md-1") Password:
+        input(type="password" id="password" class="col-md-2")
+      div(class="row")
+        label(for="ListName" class="col-md-1") List Name
+        input(type="text" id="ListName" class="col-md-2")
+      div(class="row")
+        label(class="col-md-1")
+        input(type="submit" id="add" value="Add Ingredients!" class="col-md=2")      
   br
-  label
-  input(type="submit" id="add" value="Add Ingredients!")
-

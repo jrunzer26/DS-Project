@@ -1,2 +1,2 @@
 source Env/bin/activate
-python HelloRPC.py
+python TodoistRPC.py
