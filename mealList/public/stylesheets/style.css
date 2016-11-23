@@ -150,3 +150,16 @@ li {
 	left: 0px;
 	width: 100%;
 }
+
+#form {
+	width: 30%;
+}
+
+#SearchValue {
+	width: 40%;
+}
+
+.center {
+	display: inline-block;
+	vertical-align: middle;
+}

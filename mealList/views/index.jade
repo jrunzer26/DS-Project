@@ -9,10 +9,10 @@ block content
     p Meal-to-List is a free service to find meals and send the ingredients into a Todoist shopping list.
     p Enter a food item below to get started.
   
-  #searchBar
-    label Search:
-    input(type="text" id="SearchValue")
-    input(type="submit" value="Search" id="SearchSubmit")
+  div(id="searchBar" class="row")
+    label(class="col-md-1 center") Search:
+    input(type="text" id="SearchValue" class="form-control col-md-12")
+    input(type="submit" value="Search" id="SearchSubmit" class="btn btn-default")
 
   #mealList
     #title
@@ -24,15 +24,14 @@ block content
     h3="Todoist Login"
     div(id="form")
       div(class="row")
-        label(class="col-md-1") Email:
-        input(type="text" id="email" class="col-md-2")
+        label Email:
+        input(type="email" id="email" class="col-md-2 form-control")
       div(class="row")
-        label(for="password" class="col-md-1") Password:
-        input(type="password" id="password" class="col-md-2")
+        label Password:
+        input(type="password" id="password" class="col-md-2 form-control")
       div(class="row")
-        label(for="ListName" class="col-md-1") List Name
-        input(type="text" id="ListName" class="col-md-2")
+        label List Name
+        input(type="text" id="ListName" class="col-md-2 form-control")
       div(class="row")
-        label(class="col-md-1")
-        input(type="submit" id="add" value="Add Ingredients!" class="col-md=2")      
+        input(type="submit" id="add" value="Add Ingredients!" class="col-md=2 btn btn-default")      
   br

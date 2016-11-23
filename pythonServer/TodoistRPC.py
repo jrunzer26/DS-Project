@@ -9,12 +9,6 @@ class TodoistRPC(object):
 	def makeList(self, username, password, listname, items):
 		errors = ''
 		api = todoist.TodoistAPI('35b87a85b6e07d2fb7be29efc9bba31e79b61b19')
-		""" error check api"""
-		"""
-		if "error" in api:
-			response = "{ \"err\" : \"" + api['error'] + "\"}"
-			return str(response)
-		"""
 		user = api.user.login(username, password)
 		if 'error' in user:
 			errors = "{ \"err\" : \"" + user['error'] + "\"}"

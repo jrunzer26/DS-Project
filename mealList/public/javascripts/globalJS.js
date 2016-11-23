@@ -120,6 +120,7 @@ $(document).ready(function() {
 				message("List Saved!", "success");			
 			},
 			error: function(res) {
+				alert(JSON.stringify(res));
 				message(res.responseJSON.err, "danger");
 			}
 		});
