@@ -1,0 +1,18 @@
+{
+  "name": "loadtesting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "load-todoist.js",
+  "dependencies": {
+    "asyncawait": "^1.0.6",
+    "cli-table": "^0.3.1",
+    "loadtest": "^2.2.1",
+    "synchronize": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
