@@ -32,7 +32,8 @@ $(document).ready(function() {
 				var aRecipe = res.hits[0].recipe;
 				for (var i = 0; i < res.hits.length; i++) {
 					var content = '' +
-						'<div class="mealItem col-md-6">' +
+					'<div class="row row-centered">' +
+						'<div class="mealItem col-centered">' +
 							'<div class="mealBorder">' +
 								'<div class="mealLabel">' +
 									'<a href="' + res.hits[i].recipe.url + '" target="_blank">' +
@@ -59,8 +60,9 @@ $(document).ready(function() {
 									'</div>' +
 								'</div>' + 
 							'</div>' +
-						'</div>';
-					$('#meals .row').append(content);
+						'</div>' +
+					'</div>';
+					$('#meals .container-fluid').append(content);
 				}
 			},
 			error: function(res) {
