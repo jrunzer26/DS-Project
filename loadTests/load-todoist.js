@@ -93,9 +93,153 @@ var getIndexConcurrent = function() {
 			result.totalRequests, result.totalErrors, JSON.stringify(result.errorCodes), result.rps, testDescription.concurrency, 
 			result.meanLatencyMs, result.maxLatencyMs, percentilesText, result.totalTimeSeconds]);
 		// next function
-		createTable();
+		postTodoistSingle();
 	});
 };
+
+var postTodoistSingle = function() {
+	var bodyData = {
+		"username" : "jrunzer26@hotmail.com",
+		"password" : "password",
+		"listname": "Load Test List",
+	    "items": [{
+	      "name": "carrots"
+	    }, {
+	      "name": "peas"
+	    }]
+	};
+	var options = {
+		url: urlVal + '/todoist',
+		method: "POST",
+		maxRequests: 1,
+		body: bodyData,
+		contentType: 'application/json'
+	};
+	var testDescription = descriptionCreator("POST", "/todoist", "Single\nRequest", options);
+	printDes(testDescription);
+	loadtest.loadTest(options, function(error, result) {
+		if (error) {
+			console.log(error);
+		}
+		var percentiles = result.percentiles;
+		var percentilesText = "50: " + percentiles['50']  +  "\n" +
+			"90: " + percentiles['90'] + "\n" +
+			"95: " + percentiles['95'] + "\n" + 
+			"99: " + percentiles['99'];
+		table.push([testDescription.method, testDescription.url, testDescription.description,
+			result.totalRequests, result.totalErrors, JSON.stringify(result.errorCodes), result.rps, testDescription.concurrency, 
+			result.meanLatencyMs, result.maxLatencyMs, percentilesText, result.totalTimeSeconds]);
+		// next function
+		postTodoistMultipleSync();
+	});
+}
+
+
+var postTodoistMultipleSync = function() {
+	var bodyData = {
+		"username" : "jrunzer26@hotmail.com",
+		"password" : "password",
+		"listname": "Load Test List",
+	    "items": [{
+	      "name": "carrots"
+	    }, {
+	      "name": "peas"
+	    }]
+	};
+	var options = {
+		url: urlVal + '/todoist',
+		method: "POST",
+		maxRequests: 100,
+		body: bodyData,
+		contentType: 'application/json'
+	};
+	var testDescription = descriptionCreator("POST", "/todoist", "Multiple\nSync \nRequest", options);
+	printDes(testDescription);
+	loadtest.loadTest(options, function(error, result) {
+		if (error) {
+			console.log(error);
+		}
+		var percentiles = result.percentiles;
+		var percentilesText = "50: " + percentiles['50']  +  "\n" +
+			"90: " + percentiles['90'] + "\n" +
+			"95: " + percentiles['95'] + "\n" + 
+			"99: " + percentiles['99'];
+		table.push([testDescription.method, testDescription.url, testDescription.description,
+			result.totalRequests, result.totalErrors, JSON.stringify(result.errorCodes), result.rps, testDescription.concurrency, 
+			result.meanLatencyMs, result.maxLatencyMs, percentilesText, result.totalTimeSeconds]);
+		// next function
+		postTodoistMultipleAsync();
+	});
+}
+
+var postTodoistMultipleAsync = function() {
+	var bodyData = {
+		"username" : "jrunzer26@hotmail.com",
+		"password" : "password",
+		"listname": "Load Test List",
+	    "items": [{
+	      "name": "carrots"
+	    }, {
+	      "name": "peas"
+	    }]
+	};
+	var options = {
+		url: urlVal + '/todoist',
+		method: "POST",
+		maxRequests: 100,
+		concurrency: 10,
+		body: bodyData,
+		contentType: 'application/json'
+	};
+	var testDescription = descriptionCreator("POST", "/todoist", "Multiple\nAsync \nRequest", options);
+	printDes(testDescription);
+	loadtest.loadTest(options, function(error, result) {
+		if (error) {
+			console.log(error);
+		}
+		var percentiles = result.percentiles;
+		var percentilesText = "50: " + percentiles['50']  +  "\n" +
+			"90: " + percentiles['90'] + "\n" +
+			"95: " + percentiles['95'] + "\n" + 
+			"99: " + percentiles['99'];
+		table.push([testDescription.method, testDescription.url, testDescription.description,
+			result.totalRequests, result.totalErrors, JSON.stringify(result.errorCodes), result.rps, testDescription.concurrency, 
+			result.meanLatencyMs, result.maxLatencyMs, percentilesText, result.totalTimeSeconds]);
+		// next function
+		postFoodSingle();
+	});
+}
+
+var postFoodSingle = function() {
+	var bodyData = {
+		"search":"chicken"
+	};
+	var options = {
+		url: urlVal + '/food',
+		method: "POST",
+		maxRequests: 1,
+		body: bodyData,
+		contentType: 'application/json'
+	};
+	var testDescription = descriptionCreator("POST", "/food", "Single\nRequest", options);
+	printDes(testDescription);
+	loadtest.loadTest(options, function(error, result) {
+		if (error) {
+			console.log(error);
+		}
+		var percentiles = result.percentiles;
+		var percentilesText = "50: " + percentiles['50']  +  "\n" +
+			"90: " + percentiles['90'] + "\n" +
+			"95: " + percentiles['95'] + "\n" + 
+			"99: " + percentiles['99'];
+		table.push([testDescription.method, testDescription.url, testDescription.description,
+			result.totalRequests, result.totalErrors, JSON.stringify(result.errorCodes), result.rps, testDescription.concurrency, 
+			result.meanLatencyMs, result.maxLatencyMs, percentilesText, result.totalTimeSeconds]);
+		// next function
+		createTable();
+	});
+}
+
 
 var createTable = function() {
 	console.log(table.toString());
@@ -105,8 +249,8 @@ var printDes = function(testDes) {
 	console.log("Starting test: " + testDes.method + " " + testDes.url + " " + testDes.description )
 }
 getIndexSingle();
-
-
+//postTodoistSingle();
+//postFoodSingle();
 
 
 		
