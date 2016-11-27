@@ -32,7 +32,7 @@ router.post('/', function(req, res, next) {
   }
   for (var key in req.body.items) {
     items.push(req.body.items[key].name.replace('\xbd', '1/2')
-      .replace('\xbc', '1/4').replace('\xbe', '3/4'));
+      .replace('\xbc', '1/4').replace('\xbe', '3/4').replace('\u2044', '/'));
   }
   client.invoke("makeList", String(req.body.username), String(req.body.password),
       String(req.body.listname), items, function (error, result, more) {
