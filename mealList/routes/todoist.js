@@ -31,12 +31,13 @@ router.post('/', function(req, res, next) {
     return res.status(400).json({err: "Please add items to your list"});
   }
   for (var key in req.body.items) {
-    items.push(req.body.items[key].name)
+    items.push(req.body.items[key].name.replace('\xbd', '1/2')
+      .replace('\xbc', '1/4').replace('\xbe', '3/4'));
   }
   client.invoke("makeList", String(req.body.username), String(req.body.password),
       String(req.body.listname), items, function (error, result, more) {
     if (error) {
-      return res.status(407).json({err: "An internal error occured. Try again later."});
+      return res.status(500).json({err: "An internal error occured. Try again later."});
     }
     
     if (result != undefined) {
@@ -47,7 +48,7 @@ router.post('/', function(req, res, next) {
         return res.status(400).json(pythonResult);
     }
     else {
-      return res.status(400).json({"err": "There currently is a problem with Todoist. Try again later."});
+      return res.status(500).json({"err": "There currently is a problem with Todoist. Try again later."});
     }
   });
 });

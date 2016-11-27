@@ -92,9 +92,7 @@ img {
 	margin-right: 8px;
 }
 
-ul {
-	list-style-type: none;
-}
+
 li {
 	padding-bottom: 8px;
 }
@@ -160,7 +158,9 @@ li {
 
 .center {
 	display: inline-block;
-	vertical-align: middle;
+	vertical-align: bottom;
+	float: none;
+	margin-top: 5px;
 }
 
 .row-centered {

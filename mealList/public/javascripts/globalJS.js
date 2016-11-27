@@ -55,7 +55,7 @@ $(document).ready(function() {
 								content += '</ul>' +
 											'<br>' +
 											'<input type="checkbox" value="add" id="' + 'checkbox' + i +'"">' +
-											'<label> Add All ingredients </label>'
+											'<label> Add All Ingredients </label>'
 										'</label>' +
 									'</div>' +
 								'</div>' + 
@@ -122,7 +122,6 @@ $(document).ready(function() {
 				message("List Saved!", "success");			
 			},
 			error: function(res) {
-				alert(JSON.stringify(res));
 				message(res.responseJSON.err, "danger");
 			}
 		});
