@@ -51,7 +51,7 @@ var getIndexSingle = function() {
 var getIndexMultiple = function() {
 	var options = {
 		url: urlVal,
-		maxRequests: 100
+		maxRequests: 15
 	};
 	var testDescription = descriptionCreator("GET", "/index", "Multiple\nSync\nRequest", options);
 	printDes(testDescription);
@@ -75,8 +75,8 @@ var getIndexMultiple = function() {
 var getIndexConcurrent = function() {
 	var options = {
 		url: urlVal,
-		maxRequests: 100,
-		concurrency: 10
+		maxRequests: 15,
+		concurrency: 5
 	};
 	var testDescription = descriptionCreator("GET", "/index", "Multiple\nAsync \nRequest", options);
 	printDes(testDescription);
@@ -149,7 +149,7 @@ var postTodoistMultipleSync = function() {
 	var options = {
 		url: urlVal + '/todoist',
 		method: "POST",
-		maxRequests: 100,
+		maxRequests: 15,
 		body: bodyData,
 		contentType: 'application/json'
 	};
@@ -186,12 +186,12 @@ var postTodoistMultipleAsync = function() {
 	var options = {
 		url: urlVal + '/todoist',
 		method: "POST",
-		maxRequests: 100,
-		concurrency: 10,
+		maxRequests: 15,
+		concurrency: 5,
 		body: bodyData,
 		contentType: 'application/json'
 	};
-	var testDescription = descriptionCreator("POST", "/todoist", "Multiple\nAsync \nRequest", options);
+	var testDescription = descriptionCreator("POST", "/todoist", "Multiple\nAsync\nRequest", options);
 	printDes(testDescription);
 	loadtest.loadTest(options, function(error, result) {
 		if (error) {
@@ -236,6 +236,67 @@ var postFoodSingle = function() {
 			result.totalRequests, result.totalErrors, JSON.stringify(result.errorCodes), result.rps, testDescription.concurrency, 
 			result.meanLatencyMs, result.maxLatencyMs, percentilesText, result.totalTimeSeconds]);
 		// next function
+		postFoodMultipleSync();
+	});
+}
+
+var postFoodMultipleSync = function() {
+	var bodyData = {
+		"search":"chicken"
+	};
+	var options = {
+		url: urlVal + '/food',
+		method: "POST",
+		maxRequests: 15,
+		body: bodyData,
+		contentType: 'application/json'
+	};
+	var testDescription = descriptionCreator("POST", "/food", "Multiple\nSync\nRequest", options);
+	printDes(testDescription);
+	loadtest.loadTest(options, function(error, result) {
+		if (error) {
+			console.log(error);
+		}
+		var percentiles = result.percentiles;
+		var percentilesText = "50: " + percentiles['50']  +  "\n" +
+			"90: " + percentiles['90'] + "\n" +
+			"95: " + percentiles['95'] + "\n" + 
+			"99: " + percentiles['99'];
+		table.push([testDescription.method, testDescription.url, testDescription.description,
+			result.totalRequests, result.totalErrors, JSON.stringify(result.errorCodes), result.rps, testDescription.concurrency, 
+			result.meanLatencyMs, result.maxLatencyMs, percentilesText, result.totalTimeSeconds]);
+		// next function
+		postFoodMultipleAsync();
+	});
+}
+
+var postFoodMultipleAsync = function() {
+	var bodyData = {
+		"search":"chicken"
+	};
+	var options = {
+		url: urlVal + '/food',
+		method: "POST",
+		maxRequests: 15,
+		concurrency: 5,
+		body: bodyData,
+		contentType: 'application/json'
+	};
+	var testDescription = descriptionCreator("POST", "/food", "Muliple\nAsync\nRequest", options);
+	printDes(testDescription);
+	loadtest.loadTest(options, function(error, result) {
+		if (error) {
+			console.log(error);
+		}
+		var percentiles = result.percentiles;
+		var percentilesText = "50: " + percentiles['50']  +  "\n" +
+			"90: " + percentiles['90'] + "\n" +
+			"95: " + percentiles['95'] + "\n" + 
+			"99: " + percentiles['99'];
+		table.push([testDescription.method, testDescription.url, testDescription.description,
+			result.totalRequests, result.totalErrors, JSON.stringify(result.errorCodes), result.rps, testDescription.concurrency, 
+			result.meanLatencyMs, result.maxLatencyMs, percentilesText, result.totalTimeSeconds]);
+		// next function
 		createTable();
 	});
 }
@@ -249,12 +310,3 @@ var printDes = function(testDes) {
 	console.log("Starting test: " + testDes.method + " " + testDes.url + " " + testDes.description )
 }
 getIndexSingle();
-//postTodoistSingle();
-//postFoodSingle();
-
-
-		
-
-
-
-
